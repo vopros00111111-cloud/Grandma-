@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для самой любимой бабушки 💛</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Nunito:wght@300;400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #FDF8F0;
+    --soft:    #F7EFE0;
+    --gold:    #C9A84C;
+    --gold2:   #E8C97A;
+    --rose:    #D4877A;
+    --text:    #3D2E1E;
+    --muted:   #7A6552;
+    --white:   #FFFDF9;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── ПЕТАЛИ (фоновый декор) ── */
+  .petals {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .petal {
+    position: absolute; width: 10px; height: 10px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── НАВ ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: center; gap: 8px;
+    padding: 14px 20px;
+    background: rgba(253,248,240,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  nav button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: none; border: none; cursor: pointer;
+    color: var(--muted);
+    padding: 6px 14px; border-radius: 20px;
+    transition: all 0.25s;
+  }
+  nav button:hover, nav button.active {
+    background: var(--gold); color: var(--white);
+  }
+
+  /* ── СЕКЦИИ ── */
+  section {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 100px 24px 60px;
+  }
+
+  /* ── СТРАНИЦА 1: ГЛАВНАЯ ── */
+  #page-1 {
+    background: linear-gradient(160deg, #FDF8F0 0%, #F7EFE0 60%, #F0E6D0 100%);
+    flex-direction: column; text-align: center;
+  }
+  .hero-ornament {
+    font-size: 3.5rem; margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .hero-label {
+    font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--text);
+  }
+  h1 em { font-style: italic; color: var(--rose); }
+  .hero-sub {
+    margin-top: 24px; max-width: 460px;
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: var(--muted);
+  }
+  .btn-main {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 14px 40px; border-radius: 50px;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--white); font-family: 'Nunito', sans-serif;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.06em;
+    border: none; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(201,168,76,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(201,168,76,0.45);
+  }
+
+  /* ── СТРАНИЦА 2: ПИСЬМО ── */
+  #page-2 {
+    background: var(--white);
+    justify-content: center;
+  }
+  .letter-wrap {
+    max-width: 640px; width: 100%;
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 56px 52px;
+    border: 1px solid rgba(201,168,76,0.25);
+    box-shadow: 0 20px 60px rgba(61,46,30,0.07);
+    position: relative;
+  }
+  .letter-wrap::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--rose), var(--gold), var(--gold2));
+    border-radius: 4px 4px 0 0;
+  }
+  .letter-date {
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 400; margin-bottom: 28px; color: var(--text);
+  }
+  .letter-body p {
+    font-size: 1rem; line-height: 1.9; color: var(--muted);
+    margin-bottom: 18px; font-weight: 300;
+  }
+  .letter-body p strong { color: var(--text); font-weight: 600; }
+  .letter-sig {
+    margin-top: 36px; font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.2rem; color: var(--rose);
+  }
+
+  /* ── СТРАНИЦА 3: ВОСПОМИНАНИЯ ── */
+  #page-3 {
+    background: linear-gradient(170deg, #F0E6D0 0%, #FDF8F0 100%);
+    flex-direction: column;
+  }
+  .mem-title {
+    text-align: center; margin-bottom: 56px;
+  }
+  .mem-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 300;
+  }
+  .mem-title p { color: var(--muted); font-size: 0.95rem; margin-top: 8px; }
+
+  .memories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; max-width: 860px; width: 100%;
+  }
+  .mem-card {
+    background: var(--white);
+    border-radius: 3px;
+    padding: 32px 28px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .mem-card:hover {
+    border-bottom-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(61,46,30,0.1);
+  }
+  .mem-icon { font-size: 2rem; margin-bottom: 16px; }
+  .mem-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; margin-bottom: 10px;
+  }
+  .mem-card p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+
+  /* ── СТРАНИЦА 4: ПОЖЕЛАНИЯ ── */
+  #page-4 {
+    background: var(--text);
+    flex-direction: column; text-align: center;
+  }
+  #page-4 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 4rem); font-weight: 300;
+    color: var(--gold2); margin-bottom: 16px;
+  }
+  #page-4 .sub {
+    color: rgba(253,248,240,0.55); font-size: 0.9rem; margin-bottom: 56px;
+  }
+  .wishes {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 16px;
+    max-width: 700px;
+  }
+  .wish-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    padding: 12px 24px;
+    color: var(--cream); font-size: 0.9rem;
+    font-weight: 300; letter-spacing: 0.03em;
+    transition: background 0.25s, border-color 0.25s;
+    cursor: default;
+  }
+  .wish-tag:hover {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+    color: var(--gold2);
+  }
+  .final-heart {
+    margin-top: 64px; font-size: 3rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.15); }
+  }
+  .final-text {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.3rem;
+    color: rgba(253,248,240,0.7);
+  }
+
+  /* ── СКРОЛЛ-ИНДИКАТОР ── */
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.6;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(5px)} }
+  .scroll-hint span { font-size: 1.2rem; }
+
+  @media (max-width: 600px) {
+    .letter-wrap { padding: 36px 24px; }
+    .memories { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ПАДАЮЩИЕ ЛЕПЕСТКИ -->
+<div class="petals" id="petals"></div>
+
+<!-- НАВ -->
+<nav>
+  <button class="active" onclick="goTo(1)">Привет</button>
+  <button onclick="goTo(2)">Письмо</button>
+  <button onclick="goTo(3)">Моменты</button>
+  <button onclick="goTo(4)">Пожелания</button>
+</nav>
+
+<!-- СТРАНИЦА 1 -->
+<section id="page-1">
+  <div class="hero-ornament">🌼</div>
+  <div class="hero-label">С любовью для тебя</div>
+  <h1>Дорогая<br><em>бабушка</em></h1>
+  <p class="hero-sub">
+    Этот маленький сайт создан специально для тебя —
+    чтобы сказать, как много ты для нас значишь.
+  </p>
+  <button class="btn-main" onclick="goTo(2)">Читать письмо ✉️</button>
+  <div class="scroll-hint"><span>↓</span> листай ниже</div>
+</section>
+
+<!-- СТРАНИЦА 2 -->
+<section id="page-2">
+  <div class="letter-wrap">
+    <div class="letter-date">Письмо от всего сердца</div>
+    <h2>Самой любимой бабушке на свете</h2>
+    <div class="letter-body">
+      <p>
+        Знаешь, есть такие люди, рядом с которыми становится <strong>теплее</strong> —
+        не потому что на улице солнечно, а потому что они сами несут в себе этот свет.
+        Ты именно такой человек.
+      </p>
+      <p>
+        Твои руки умеют всё: и пирог испечь так, что запах помнишь годами,
+        и обнять так крепко, что все тревоги куда-то исчезают,
+        и <strong>найти нужные слова</strong>, когда, казалось бы, их не существует.
+      </p>
+      <p>
+        Я помню, как ты учила меня, что добро возвращается.
+        Ты сама — лучшее доказательство этого.
+        Сколько тепла ты отдала — столько и получай обратно,
+        <strong>умноженным в тысячу раз.</strong>
+      </p>
+      <p>
+        Спасибо за твою мудрость, терпение и бесконечную любовь.
+        Мы так тебя любим — словами не передать.
+      </p>
+    </div>
+    <div class="letter-sig">Навсегда твои 💛</div>
+  </div>
+</section>
+
+<!-- СТРАНИЦА 3 -->
+<section id="page-3">
+  <div class="mem-title">
+    <h2>Моменты, которые греют душу</h2>
+    <p>Маленькие вещи, которые делают тебя незаменимой</p>
+  </div>
+  <div class="memories">
+    <div class="mem-card">
+      <div class="mem-icon">🥧</div>
+      <h3>Твоя кухня</h3>
+      <p>Этот запах выпечки, который встречает у порога — наверное, самый уютный запах на земле.</p>
+    </div>
+    <div class="mem-card">
+      <div class="mem-icon">📖</div>
+      <h3>Твои истории</h3>
+      <p>Каждый раз — новые детали, новые краски. Слушать тебя — всё равно что читать живую книгу.</p>
+    </div>
+    <div class="mem-card">
+      <div class="mem-icon">🧶</div>
+      <h3>Твои руки</h3>
+      <p>В каждой петельке — забота. Варежки, шарфы, скатерти — всё сделано с любовью.</p>
+    </div>
+    <div class="mem-card">
+      <div class="mem-icon">🌿</div>
+      <h3>Твой сад</h3>
+      <p>Цветы у тебя растут так, будто понимают, что попали в правильные руки.</p>
+    </div>
+    <div class="mem-card">
+      <div class="mem-icon">☕</div>
+      <h3>Утренний чай</h3>
+      <p>Сидеть с тобой на кухне и просто разговаривать — это маленькое счастье, которого не хватает.</p>
+    </div>
+    <div class="mem-card">
+      <div class="mem-icon">💬</div>
+      <h3>Твои советы</h3>
+      <p>Ты всегда знаешь, что сказать. Тихо, без лишних слов — и всё встаёт на своё место.</p>
+    </div>
+  </div>
+</section>
+
+<!-- СТРАНИЦА 4 -->
+<section id="page-4">
+  <h2>Желаем тебе</h2>
+  <p class="sub">от всей семьи, с любовью</p>
+  <div class="wishes">
+    <div class="wish-tag">Крепкого здоровья 🌱</div>
+    <div class="wish-tag">Лёгкого сна ✨</div>
+    <div class="wish-tag">Тёплых дней 🌤️</div>
+    <div class="wish-tag">Радости в мелочах 🍃</div>
+    <div class="wish-tag">Долгих лет жизни 🕊️</div>
+    <div class="wish-tag">Улыбок каждый день 😊</div>
+    <div class="wish-tag">Хорошего настроения 🌸</div>
+    <div class="wish-tag">Уюта и покоя 🏡</div>
+    <div class="wish-tag">Рядом — любимые люди 💛</div>
+    <div class="wish-tag">Исполнения желаний 🌟</div>
+  </div>
+  <div class="final-heart">💛</div>
+  <p class="final-text">Ты — наше самое большое сокровище</p>
+</section>
+
+<script>
+  /* ── ПЕТАЛИ ── */
+  const colors = ['#E8C97A','#D4877A','#C9A84C','#F0D4A8','#E8B4A0'];
+  const container = document.getElementById('petals');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `
+      left: ${Math.random()*100}%;
+      width: ${6 + Math.random()*8}px;
+      height: ${6 + Math.random()*8}px;
+      background: ${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration: ${7 + Math.random()*10}s;
+      animation-delay: ${Math.random()*10}s;
+      opacity: 0;
+      border-radius: ${Math.random()>0.5?'50% 0 50% 0':'50%'};
+    `;
+    container.appendChild(p);
+  }
+
+  /* ── НАВ АКТИВАЦИЯ ── */
+  const sections = [1,2,3,4].map(n => document.getElementById('page-'+n));
+  const navBtns  = document.querySelectorAll('nav button');
+
+  function goTo(n) {
+    document.getElementById('page-'+n).scrollIntoView({behavior:'smooth'});
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = sections.indexOf(e.target);
+        navBtns.forEach((b,i) => b.classList.toggle('active', i===idx));
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
